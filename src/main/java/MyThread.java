@@ -7,12 +7,12 @@ class MyThread extends Thread {
 	@Override
 	public void run() {
 		try {
-			while(!isInterrupted()) {
+			while(!Thread.currentThread().isInterrupted()) {
 				Thread.sleep(2500);
 				System.out.println("Я " + getName() + ". Всем привет!");
 			}
-		} catch (InterruptedException err) {
-			return;
+		} catch (InterruptedException e) {
+			System.out.printf("\n%s завершен", Thread.currentThread().getName());
 		}
 	}
 }
